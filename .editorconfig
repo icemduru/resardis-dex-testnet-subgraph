@@ -1,0 +1,30 @@
+# EditorConfig is awesome: https://EditorConfig.org
+
+# top-most EditorConfig file
+root = true
+
+[*]
+charset = utf-8
+end_of_line = lf
+indent_style = space
+indent_size = 4
+insert_final_newline = true
+trim_trailing_whitespace = true
+
+[*.sol]
+max_line_length = 99
+
+[*.js, *.ts]
+indent_size = 2
+max_line_length = 120
+
+# The JSON files contain newlines inconsistently
+[*.json]
+indent_size = 2
+insert_final_newline = false
+
+[*.txt]
+max_line_length = 79
+
+[*.sh]
+max_line_length = 79
