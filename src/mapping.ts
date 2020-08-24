@@ -28,7 +28,7 @@ import { Trade } from "../generated/schema"
 import { Withdraw } from "../generated/schema"
 
 export function handleLogDeposit(event: LogDeposit): void {
-  const deposit = new Deposit(event.transaction.hash.toHex())
+  const deposit = new Deposit(event.transaction.hash.toHex() + "-" + event.logIndex.toString())
   deposit.token = event.params.token
   deposit.user = event.params.user
   deposit.amount = event.params.amount
@@ -87,13 +87,15 @@ export function handleLogDeposit(event: LogDeposit): void {
 }
 
 export function handleLogItemUpdate(event: LogItemUpdate): void {
-  const itemupdate = new ItemUpdate(event.transaction.hash.toHex())
+  const itemupdate = new ItemUpdate(
+    event.transaction.hash.toHex() + "-" + event.logIndex.toString()
+  )
   itemupdate.offerItemID = event.params.id
   itemupdate.save()
 }
 
 export function handleLogKill(event: LogKill): void {
-  const kill = new Kill(event.transaction.hash.toHex())
+  const kill = new Kill(event.transaction.hash.toHex() + "-" + event.logIndex.toString())
   kill.offerID = event.params.id
   kill.pair = event.params.pair
   kill.maker = event.params.maker
@@ -106,7 +108,7 @@ export function handleLogKill(event: LogKill): void {
 }
 
 export function handleLogMake(event: LogMake): void {
-  const make = new Make(event.transaction.hash.toHex())
+  const make = new Make(event.transaction.hash.toHex() + "-" + event.logIndex.toString())
   make.offerID = event.params.id
   make.pair = event.params.pair
   make.maker = event.params.maker
@@ -120,7 +122,7 @@ export function handleLogMake(event: LogMake): void {
 }
 
 export function handleLogMinSell(event: LogMinSell): void {
-  const minsell = new MinSell(event.transaction.hash.toHex())
+  const minsell = new MinSell(event.transaction.hash.toHex() + "-" + event.logIndex.toString())
   minsell.payGem = event.params.payGem
   minsell.minAmount = event.params.minAmount
   minsell.caller = event.params.caller
@@ -128,32 +130,36 @@ export function handleLogMinSell(event: LogMinSell): void {
 }
 
 export function handleLogOfferType(event: LogOfferType): void {
-  const offertype = new OfferType(event.transaction.hash.toHex())
+  const offertype = new OfferType(event.transaction.hash.toHex() + "-" + event.logIndex.toString())
   offertype.offerType = event.params.offerType
   offertype.state = event.params.state
   offertype.save()
 }
 
 export function handleLogSetAuthority(event: LogSetAuthority): void {
-  const setauthority = new SetAuthority(event.transaction.hash.toHex())
+  const setauthority = new SetAuthority(
+    event.transaction.hash.toHex() + "-" + event.logIndex.toString()
+  )
   setauthority.authority = event.params.authority
   setauthority.save()
 }
 
 export function handleLogSetOwner(event: LogSetOwner): void {
-  const setowner = new SetOwner(event.transaction.hash.toHex())
+  const setowner = new SetOwner(event.transaction.hash.toHex() + "-" + event.logIndex.toString())
   setowner.owner = event.params.owner
   setowner.save()
 }
 
 export function handleLogSortedOffer(event: LogSortedOffer): void {
-  const sortedoffer = new SortedOffer(event.transaction.hash.toHex())
+  const sortedoffer = new SortedOffer(
+    event.transaction.hash.toHex() + "-" + event.logIndex.toString()
+  )
   sortedoffer.offerID = event.params.id
   sortedoffer.save()
 }
 
 export function handleLogTake(event: LogTake): void {
-  const take = new Take(event.transaction.hash.toHex())
+  const take = new Take(event.transaction.hash.toHex() + "-" + event.logIndex.toString())
   take.offerID = event.params.id
   take.pair = event.params.pair
   take.maker = event.params.maker
@@ -168,7 +174,7 @@ export function handleLogTake(event: LogTake): void {
 }
 
 export function handleLogTrade(event: LogTrade): void {
-  const trade = new Trade(event.transaction.hash.toHex())
+  const trade = new Trade(event.transaction.hash.toHex() + "-" + event.logIndex.toString())
   trade.payAmt = event.params.payAmt
   trade.payGem = event.params.payGem
   trade.buyAmt = event.params.buyAmt
@@ -178,7 +184,7 @@ export function handleLogTrade(event: LogTrade): void {
 }
 
 export function handleLogWithdraw(event: LogWithdraw): void {
-  const withdraw = new Withdraw(event.transaction.hash.toHex())
+  const withdraw = new Withdraw(event.transaction.hash.toHex() + "-" + event.logIndex.toString())
   withdraw.token = event.params.token
   withdraw.user = event.params.user
   withdraw.amount = event.params.amount
