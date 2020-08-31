@@ -149,13 +149,13 @@ export class Kill extends Entity {
     this.set("id", Value.fromString(value));
   }
 
-  get offerID(): Bytes {
+  get offerID(): BigInt {
     let value = this.get("offerID");
-    return value.toBytes();
+    return value.toBigInt();
   }
 
-  set offerID(value: Bytes) {
-    this.set("offerID", Value.fromBytes(value));
+  set offerID(value: BigInt) {
+    this.set("offerID", Value.fromBigInt(value));
   }
 
   get pair(): Bytes {
@@ -252,13 +252,13 @@ export class Make extends Entity {
     this.set("id", Value.fromString(value));
   }
 
-  get offerID(): Bytes {
+  get offerID(): BigInt {
     let value = this.get("offerID");
-    return value.toBytes();
+    return value.toBigInt();
   }
 
-  set offerID(value: Bytes) {
-    this.set("offerID", Value.fromBytes(value));
+  set offerID(value: BigInt) {
+    this.set("offerID", Value.fromBigInt(value));
   }
 
   get pair(): Bytes {
@@ -591,13 +591,13 @@ export class Take extends Entity {
     this.set("id", Value.fromString(value));
   }
 
-  get offerID(): Bytes {
+  get offerID(): BigInt {
     let value = this.get("offerID");
-    return value.toBytes();
+    return value.toBigInt();
   }
 
-  set offerID(value: Bytes) {
-    this.set("offerID", Value.fromBytes(value));
+  set offerID(value: BigInt) {
+    this.set("offerID", Value.fromBigInt(value));
   }
 
   get pair(): Bytes {

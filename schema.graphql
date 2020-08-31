@@ -11,7 +11,7 @@ type ItemUpdate @entity {
 }
 type Kill @entity {
   id: ID!
-  offerID: Bytes!
+  offerID: BigInt!
   pair: Bytes!
   maker: Bytes!
   payGem: Bytes!
@@ -22,7 +22,7 @@ type Kill @entity {
 }
 type Make @entity {
   id: ID!
-  offerID: Bytes!
+  offerID: BigInt!
   pair: Bytes!
   maker: Bytes!
   payGem: Bytes!
@@ -57,7 +57,7 @@ type SortedOffer @entity {
 }
 type Take @entity {
   id: ID!
-  offerID: Bytes!
+  offerID: BigInt!
   pair: Bytes!
   maker: Bytes!
   payGem: Bytes!

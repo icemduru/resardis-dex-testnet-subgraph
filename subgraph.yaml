@@ -6,7 +6,7 @@ dataSources:
     name: Contract
     network: mumbai
     source:
-      address: "0xD10B1e13C03e6b887F82bE04e5E2e944479870B5"
+      address: "0xdf3786659dc64e343fFED27eD213Ed6138834B19"
       abi: Contract
       startBlock: 3300000
     mapping:
@@ -34,9 +34,9 @@ dataSources:
           handler: handleLogDeposit
         - event: LogItemUpdate(uint256)
           handler: handleLogItemUpdate
-        - event: LogKill(indexed bytes32,indexed bytes32,indexed address,address,address,uint128,uint128,uint64)
+        - event: LogKill(indexed uint256,indexed bytes32,indexed address,address,address,uint128,uint128,uint64)
           handler: handleLogKill
-        - event: LogMake(indexed bytes32,indexed bytes32,indexed address,address,address,uint128,uint128,uint64,uint8)
+        - event: LogMake(indexed uint256,indexed bytes32,indexed address,address,address,uint128,uint128,uint64,uint8)
           handler: handleLogMake
         - event: LogMinSell(address,uint256,address)
           handler: handleLogMinSell
@@ -48,7 +48,7 @@ dataSources:
           handler: handleLogSetOwner
         - event: LogSortedOffer(uint256)
           handler: handleLogSortedOffer
-        - event: LogTake(bytes32,indexed bytes32,indexed address,address,address,indexed address,uint128,uint128,uint64,uint8)
+        - event: LogTake(uint256,indexed bytes32,indexed address,address,address,indexed address,uint128,uint128,uint64,uint8)
           handler: handleLogTake
         - event: LogTrade(uint256,indexed address,uint256,indexed address,indexed uint64)
           handler: handleLogTrade

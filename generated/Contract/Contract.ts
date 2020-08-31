@@ -71,8 +71,8 @@ export class LogKill__Params {
     this._event = event;
   }
 
-  get id(): Bytes {
-    return this._event.parameters[0].value.toBytes();
+  get id(): BigInt {
+    return this._event.parameters[0].value.toBigInt();
   }
 
   get pair(): Bytes {
@@ -117,8 +117,8 @@ export class LogMake__Params {
     this._event = event;
   }
 
-  get id(): Bytes {
-    return this._event.parameters[0].value.toBytes();
+  get id(): BigInt {
+    return this._event.parameters[0].value.toBigInt();
   }
 
   get pair(): Bytes {
@@ -269,8 +269,8 @@ export class LogTake__Params {
     this._event = event;
   }
 
-  get id(): Bytes {
-    return this._event.parameters[0].value.toBytes();
+  get id(): BigInt {
+    return this._event.parameters[0].value.toBigInt();
   }
 
   get pair(): Bytes {
