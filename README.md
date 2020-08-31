@@ -11,7 +11,7 @@ Subscriptions (WS): http://138.68.84.54:8001/subgraphs/name/resardis/testnet
 {
   makes {
     offerID 
-		pair
+	pair
     maker
     payGem
     payAmt
