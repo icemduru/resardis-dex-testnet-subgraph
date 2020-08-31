@@ -27,6 +27,18 @@ Subscriptions (WS): http://138.68.84.54:8001/subgraphs/name/resardis/testnet
     amount
     balance
   }
+  takes {
+    offerID 
+	pair
+    maker
+    payGem
+    buyGem
+    taker
+    takeAmt
+    giveAmt
+    timestamp
+    offerType
+  }
   
 }
 ```
