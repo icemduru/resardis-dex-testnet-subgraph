@@ -824,3 +824,182 @@ export class Withdraw extends Entity {
     this.set("balance", Value.fromBigInt(value));
   }
 }
+
+export class OrderStatus extends Entity {
+  constructor(id: string) {
+    super();
+    this.set("id", Value.fromString(id));
+  }
+
+  save(): void {
+    let id = this.get("id");
+    assert(id !== null, "Cannot save OrderStatus entity without an ID");
+    assert(
+      id.kind == ValueKind.STRING,
+      "Cannot save OrderStatus entity with non-string ID. " +
+        'Considering using .toHex() to convert the "id" to a string.'
+    );
+    store.set("OrderStatus", id.toString(), this);
+  }
+
+  static load(id: string): OrderStatus | null {
+    return store.get("OrderStatus", id) as OrderStatus | null;
+  }
+
+  get id(): string {
+    let value = this.get("id");
+    return value.toString();
+  }
+
+  set id(value: string) {
+    this.set("id", Value.fromString(value));
+  }
+
+  get pair(): Bytes {
+    let value = this.get("pair");
+    return value.toBytes();
+  }
+
+  set pair(value: Bytes) {
+    this.set("pair", Value.fromBytes(value));
+  }
+
+  get offerID(): BigInt {
+    let value = this.get("offerID");
+    return value.toBigInt();
+  }
+
+  set offerID(value: BigInt) {
+    this.set("offerID", Value.fromBigInt(value));
+  }
+
+  get payGem(): Bytes {
+    let value = this.get("payGem");
+    return value.toBytes();
+  }
+
+  set payGem(value: Bytes) {
+    this.set("payGem", Value.fromBytes(value));
+  }
+
+  get payAmt(): BigInt {
+    let value = this.get("payAmt");
+    return value.toBigInt();
+  }
+
+  set payAmt(value: BigInt) {
+    this.set("payAmt", Value.fromBigInt(value));
+  }
+
+  get filledPayAmt(): BigInt {
+    let value = this.get("filledPayAmt");
+    return value.toBigInt();
+  }
+
+  set filledPayAmt(value: BigInt) {
+    this.set("filledPayAmt", Value.fromBigInt(value));
+  }
+
+  get buyGem(): Bytes {
+    let value = this.get("buyGem");
+    return value.toBytes();
+  }
+
+  set buyGem(value: Bytes) {
+    this.set("buyGem", Value.fromBytes(value));
+  }
+
+  get buyAmt(): BigInt {
+    let value = this.get("buyAmt");
+    return value.toBigInt();
+  }
+
+  set buyAmt(value: BigInt) {
+    this.set("buyAmt", Value.fromBigInt(value));
+  }
+
+  get filledBuyAmt(): BigInt {
+    let value = this.get("filledBuyAmt");
+    return value.toBigInt();
+  }
+
+  set filledBuyAmt(value: BigInt) {
+    this.set("filledBuyAmt", Value.fromBigInt(value));
+  }
+
+  get owner(): Bytes {
+    let value = this.get("owner");
+    return value.toBytes();
+  }
+
+  set owner(value: Bytes) {
+    this.set("owner", Value.fromBytes(value));
+  }
+
+  get timestamp(): BigInt {
+    let value = this.get("timestamp");
+    return value.toBigInt();
+  }
+
+  set timestamp(value: BigInt) {
+    this.set("timestamp", Value.fromBigInt(value));
+  }
+
+  get cancelled(): boolean {
+    let value = this.get("cancelled");
+    return value.toBoolean();
+  }
+
+  set cancelled(value: boolean) {
+    this.set("cancelled", Value.fromBoolean(value));
+  }
+
+  get filled(): boolean {
+    let value = this.get("filled");
+    return value.toBoolean();
+  }
+
+  set filled(value: boolean) {
+    this.set("filled", Value.fromBoolean(value));
+  }
+}
+
+export class OrderFilled extends Entity {
+  constructor(id: string) {
+    super();
+    this.set("id", Value.fromString(id));
+  }
+
+  save(): void {
+    let id = this.get("id");
+    assert(id !== null, "Cannot save OrderFilled entity without an ID");
+    assert(
+      id.kind == ValueKind.STRING,
+      "Cannot save OrderFilled entity with non-string ID. " +
+        'Considering using .toHex() to convert the "id" to a string.'
+    );
+    store.set("OrderFilled", id.toString(), this);
+  }
+
+  static load(id: string): OrderFilled | null {
+    return store.get("OrderFilled", id) as OrderFilled | null;
+  }
+
+  get id(): string {
+    let value = this.get("id");
+    return value.toString();
+  }
+
+  set id(value: string) {
+    this.set("id", Value.fromString(value));
+  }
+
+  get offerID(): BigInt {
+    let value = this.get("offerID");
+    return value.toBigInt();
+  }
+
+  set offerID(value: BigInt) {
+    this.set("offerID", Value.fromBigInt(value));
+  }
+}

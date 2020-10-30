@@ -83,3 +83,23 @@ type Withdraw @entity {
   amount: BigInt!
   balance: BigInt!
 }
+type OrderStatus @entity {
+  id: ID!
+  pair: Bytes!
+  offerID: BigInt!
+  payGem: Bytes!
+  payAmt: BigInt!
+  filledPayAmt: BigInt!
+  buyGem: Bytes!
+  buyAmt: BigInt!
+  filledBuyAmt: BigInt!
+  owner: Bytes!
+  timestamp: BigInt!
+  cancelled: Boolean!
+  filled: Boolean!
+}
+type OrderFilled @entity {
+  id: ID!
+  offerID: BigInt!
+}
+

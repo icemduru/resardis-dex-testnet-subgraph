@@ -202,6 +202,86 @@ export class LogOfferType__Params {
   }
 }
 
+export class LogOrderFilled extends ethereum.Event {
+  get params(): LogOrderFilled__Params {
+    return new LogOrderFilled__Params(this);
+  }
+}
+
+export class LogOrderFilled__Params {
+  _event: LogOrderFilled;
+
+  constructor(event: LogOrderFilled) {
+    this._event = event;
+  }
+
+  get id(): BigInt {
+    return this._event.parameters[0].value.toBigInt();
+  }
+}
+
+export class LogOrderStatus extends ethereum.Event {
+  get params(): LogOrderStatus__Params {
+    return new LogOrderStatus__Params(this);
+  }
+}
+
+export class LogOrderStatus__Params {
+  _event: LogOrderStatus;
+
+  constructor(event: LogOrderStatus) {
+    this._event = event;
+  }
+
+  get id(): BigInt {
+    return this._event.parameters[0].value.toBigInt();
+  }
+
+  get pair(): Bytes {
+    return this._event.parameters[1].value.toBytes();
+  }
+
+  get payGem(): Address {
+    return this._event.parameters[2].value.toAddress();
+  }
+
+  get payAmt(): BigInt {
+    return this._event.parameters[3].value.toBigInt();
+  }
+
+  get filledPayAmt(): BigInt {
+    return this._event.parameters[4].value.toBigInt();
+  }
+
+  get buyGem(): Address {
+    return this._event.parameters[5].value.toAddress();
+  }
+
+  get buyAmt(): BigInt {
+    return this._event.parameters[6].value.toBigInt();
+  }
+
+  get filledBuyAmt(): BigInt {
+    return this._event.parameters[7].value.toBigInt();
+  }
+
+  get owner(): Address {
+    return this._event.parameters[8].value.toAddress();
+  }
+
+  get timestamp(): BigInt {
+    return this._event.parameters[9].value.toBigInt();
+  }
+
+  get cancelled(): boolean {
+    return this._event.parameters[10].value.toBoolean();
+  }
+
+  get filled(): boolean {
+    return this._event.parameters[11].value.toBoolean();
+  }
+}
+
 export class LogSetAuthority extends ethereum.Event {
   get params(): LogSetAuthority__Params {
     return new LogSetAuthority__Params(this);

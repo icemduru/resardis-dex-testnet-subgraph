@@ -13,6 +13,8 @@ import {
   LogTake,
   LogTrade,
   LogWithdraw,
+  LogOrderFilled,
+  LogOrderStatus,
 } from "../generated/Contract/Contract"
 import { Deposit } from "../generated/schema"
 import { ItemUpdate } from "../generated/schema"
@@ -26,14 +28,10 @@ import { SortedOffer } from "../generated/schema"
 import { Take } from "../generated/schema"
 import { Trade } from "../generated/schema"
 import { Withdraw } from "../generated/schema"
+import { OrderFilled } from "../generated/schema"
+import { OrderStatus } from "../generated/schema"
 
-export function handleLogDeposit(event: LogDeposit): void {
-  const deposit = new Deposit(event.transaction.hash.toHex() + "-" + event.logIndex.toString())
-  deposit.token = event.params.token
-  deposit.user = event.params.user
-  deposit.amount = event.params.amount
-  deposit.balance = event.params.balance
-  deposit.save()
+
 
   // Note: If a handler doesn't require existing field values, it is faster
   // _not_ to load the entity from the store. Instead, create it fresh with
@@ -84,6 +82,13 @@ export function handleLogDeposit(event: LogDeposit): void {
   // - contract.span(...)
   // - contract.tokens(...)
   // - contract.tokensInUse(...)
+  export function handleLogDeposit(event: LogDeposit): void {
+    const deposit = new Deposit(event.transaction.hash.toHex() + "-" + event.logIndex.toString())
+    deposit.token = event.params.token
+    deposit.user = event.params.user
+    deposit.amount = event.params.amount
+    deposit.balance = event.params.balance
+    deposit.save()
 }
 
 export function handleLogItemUpdate(event: LogItemUpdate): void {
@@ -190,4 +195,26 @@ export function handleLogWithdraw(event: LogWithdraw): void {
   withdraw.amount = event.params.amount
   withdraw.balance = event.params.balance
   withdraw.save()
+}
+
+export function handleLogOrderFilled(event: LogOrderFilled): void {
+  const orderFilled = new OrderFilled(event.transaction.hash.toHex() + "-" + event.logIndex.toString())
+  orderFilled.offerID = event.params.id
+  orderFilled.save()
+}
+
+export function handleLogOrderStatus(event: LogOrderStatus): void {
+  const orderStatus = new OrderStatus(event.transaction.hash.toHex() + "-" + event.logIndex.toString())
+  orderStatus.offerID = event.params.id
+  orderStatus.pair = event.params.pair
+  orderStatus.payGem = event.params.payGem
+  orderStatus.payAmt = event.params.payAmt
+  orderStatus.filledPayAmt = event.params.filledPayAmt
+  orderStatus.buyGem = event.params.buyGem
+  orderStatus.buyAmt = event.params.buyAmt
+  orderStatus.filledBuyAmt = event.params.filledBuyAmt
+  orderStatus.owner = event.params.owner
+  orderStatus.timestamp = event.params.timestamp
+  orderStatus.cancelled = event.params.cancelled
+  orderStatus.filled = event.params.filled
 }
