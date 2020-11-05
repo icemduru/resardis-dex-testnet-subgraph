@@ -217,4 +217,5 @@ export function handleLogOrderStatus(event: LogOrderStatus): void {
   orderStatus.timestamp = event.params.timestamp
   orderStatus.cancelled = event.params.cancelled
   orderStatus.filled = event.params.filled
+  orderStatus.save()
 }
